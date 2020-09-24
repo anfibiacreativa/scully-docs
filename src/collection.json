@@ -27,6 +27,10 @@
     "update-scully-config": {
       "description": "Updates the scully config",
       "factory": "./update-scully-config/index#updateScullyConfig"
+    },
+    "ng-add": {
+      "description": "Schematic to add and install the package",
+      "factory": "./ng-add/index"
     }
   }
 }
