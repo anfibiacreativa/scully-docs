@@ -8,10 +8,10 @@ This is under development and has some pending tasks:
 But you can already use it. Clone and link to your project
 
 Create the modules with
-`ng generate scully-docs:docs`
+`$ ng generate scully-docs:docs`
 
 Create a documentation post with
-`ng generate scully-docs:doc``
+`$ ng generate scully-docs:doc`
 
 Read about it here -> https://dev.to/anfibiacreativa/a-documentation-site-with-angular-and-scully-3aam
 
