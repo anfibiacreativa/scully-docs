@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree, externalSchematic, chain, apply, url, template, move, schematic } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree, externalSchematic, chain, apply, url, template, move, schematic, SchematicsException } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 
 // You don't have to export the function as default. You can also have more than one rule factory
@@ -23,7 +23,13 @@ export function docsModule(options: any): Rule {
         const routing = `${pathStart}-routing.module.ts`;
         const temp = `${pathStart}.component.html`;
         const comp = `${pathStart}.component.ts`;
+        const appRouting = `${src}/app-routing.ts`;
         
+        const isInstalled = tree.read(appRouting)?.toString();
+
+        if (isInstalled?.includes(name)){
+          throw new SchematicsException('Docs module is already installed. Skipping!')
+        }
         const isModule = tree.exists(routing);
 
         if (isModule) {
