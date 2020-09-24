@@ -13,19 +13,19 @@
       "aliases": ["docs"]
     },
     "add-docs-module-files": {
-      "description": "A blank schematic.",
+      "description": "Adds the necessary files for the docs modules",
       "factory": "./add-docs-module-files/index#addDocsModuleFiles"
     },
     "add-side-nav": {
-      "description": "A blank schematic.",
+      "description": "Adds the side navigation",
       "factory": "./add-side-nav/index#addSideNav"
     },
     "add-sidenav-files": {
-      "description": "A blank schematic.",
+      "description": "Add the necessary files for the side navigation component",
       "factory": "./add-sidenav-files/index#addSidenavFiles"
     },
     "update-scully-config": {
-      "description": "A blank schematic.",
+      "description": "Updates the scully config",
       "factory": "./update-scully-config/index#updateScullyConfig"
     }
   }

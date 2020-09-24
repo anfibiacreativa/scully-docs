@@ -44,6 +44,7 @@ export function docsModule(options: any): Rule {
       }
     ]),
     schematic('add-docs-module-files', options),
-    schematic('add-side-nav', options)
+    schematic('add-side-nav', options),
+    schematic('update-scully-config', options)
   ])
 }
