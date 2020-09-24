@@ -24,14 +24,12 @@ export function docsModule(options: any): Rule {
         const temp = `${pathStart}.component.html`;
         const comp = `${pathStart}.component.ts`;
         
-        _context.logger.info('Wow!');
         const isModule = tree.exists(routing);
 
         if (isModule) {
           tree.delete(routing);
           tree.delete(temp);
           tree.delete(comp);
-          _context.logger.info('####### File existed so I deleted it');
     
           apply(url('./files'), [
             template({
@@ -40,10 +38,9 @@ export function docsModule(options: any): Rule {
             }),
             move(docsSrc)
           ]);
-          _context.logger.info('Where am I');
         }
 
-        _context.logger.info('I deleted the effing files');
+        _context.logger.info('💫Replacing files...');
 
         return tree;
       }
