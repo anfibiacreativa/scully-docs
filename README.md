@@ -3,7 +3,8 @@
 This is under development and has some pending tasks:
 * write tests
 * clean types
-* publish to npm (with ng add support)
+* add ng add support (/) Done!
+* publish to npm
 
 But you can already use it. Clone and link to your project
 
