@@ -1,0 +1,20 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "add-doc": {
+      "description": "Adds a new document file",
+      "factory": "./add-doc/index#addDoc",
+      "aliases": ["doc"],
+      "schema": "./add-doc/schema.json"
+    },
+    "docs-module": {
+      "description": "Adds a docs module to any angular app",
+      "factory": "./docs-module/index#docsModule",
+      "aliases": ["docs"]
+    },
+    "add-docs-module-files": {
+      "description": "A blank schematic.",
+      "factory": "./add-docs-module-files/index#addDocsModuleFiles"
+    }
+  }
+}
