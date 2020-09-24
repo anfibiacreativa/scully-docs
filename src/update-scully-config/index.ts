@@ -1,46 +1,40 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-
+import { getScullyConfig, getFileContents, addRouteToScullyConfig } from '@scullyio/init/src/utils/utils';
+import { getWorkspace } from '@schematics/angular/utility/config';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function updateScullyConfig(_options: any): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
+  return (tree: Tree, context: SchematicContext) => {
     
-    const root: string = '/';
-    const route = '/docs/:slug';
-    tree.getDir(root).visit(filePath => {
-      if (filePath.includes('node_modules')) {
-        return;
-      }
-      if (!filePath.includes('scully.')) {
-        return;
-      }
-      _context.logger.info(`Updating ${filePath}...`);
+    const slug: string = 'slug';
+    const sourceDir: string = 'docs';
+    const sourceDirRel: string =`./${sourceDir}`;
+    const route = `/${sourceDir}/${slug}`;
 
-      const scullyConfigBuffer = tree.read(filePath);
+    const workspace = getWorkspace(tree);
+    const project = (Object.keys(workspace.projects)[0]).toString();
 
-      if (!scullyConfigBuffer) {
-        return;
+    if (project) {
+      const scullyConfig = getScullyConfig(tree, project);
+      const scullyConfigContents = getFileContents(tree, scullyConfig);
+      if (!scullyConfigContents) {
+        context.logger.error(
+          `Scully is not installed or the ${scullyConfig} is missing!`
+        );
       }
-      const rawScullyConfig = JSON.parse(scullyConfigBuffer.toString('utf-8'));
-      const routes = {...rawScullyConfig['config']['routes']};
-
-      routes[route] = `{
+  
+      const addRoute = addRouteToScullyConfig(scullyConfigContents, {
+        name: route,
+        slug: slug,
         type: 'contentFolder',
-        slug: {
-          folder: './docs'
-        },`
+        sourceDir: sourceDirRel,
+        route: sourceDir
+      });
+      tree.overwrite(scullyConfig, addRoute);
+      context.logger.info(`✅️ Updated ${scullyConfig} with new route pattern`);
+    }
 
-      const updatedScullyConfig = {
-        ...rawScullyConfig,
-        routes: {
-          ...rawScullyConfig['routes'],
-          routes
-        }
-      }
-
-      tree.overwrite(filePath, JSON.stringify(updatedScullyConfig, null, 2));
-    })
     return tree;
   };
 }
