@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree, externalSchematic, chain, apply, url, template, move, schematic, SchematicsException } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree, externalSchematic, chain, schematic, SchematicsException } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 
 // You don't have to export the function as default. You can also have more than one rule factory
@@ -36,14 +36,6 @@ export function docsModule(options: any): Rule {
           tree.delete(routing);
           tree.delete(temp);
           tree.delete(comp);
-    
-          apply(url('./files'), [
-            template({
-              ...strings,
-              ...options,
-            }),
-            move(docsSrc)
-          ]);
         }
 
         _context.logger.info('💫Replacing files...');
@@ -51,6 +43,7 @@ export function docsModule(options: any): Rule {
         return tree;
       }
     ]),
-    schematic('add-docs-module-files', options)
+    schematic('add-docs-module-files', options),
+    schematic('add-side-nav', options)
   ])
 }

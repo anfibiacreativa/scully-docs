@@ -15,6 +15,18 @@
     "add-docs-module-files": {
       "description": "A blank schematic.",
       "factory": "./add-docs-module-files/index#addDocsModuleFiles"
+    },
+    "add-side-nav": {
+      "description": "A blank schematic.",
+      "factory": "./add-side-nav/index#addSideNav"
+    },
+    "add-sidenav-files": {
+      "description": "A blank schematic.",
+      "factory": "./add-sidenav-files/index#addSidenavFiles"
+    },
+    "update-scully-config": {
+      "description": "A blank schematic.",
+      "factory": "./update-scully-config/index#updateScullyConfig"
     }
   }
 }

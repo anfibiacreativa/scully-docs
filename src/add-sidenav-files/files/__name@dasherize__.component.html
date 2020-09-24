@@ -1,0 +1,7 @@
+<nav class="sidenav__base">
+  <ol class="sidenav__list">
+    <li class="sidenav__listItem" *ngFor="let doc of docs$ | async">
+      <a class="sidenav__link" [routerLink]="doc.route">{{doc.title.substring(0, 3)}} . {{doc.title.substring(3)}}</a>
+    </li>
+  </ol>
+</nav>
