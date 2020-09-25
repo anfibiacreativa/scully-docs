@@ -1,6 +1,6 @@
 {
-  "name": "scully-docs",
-  "version": "0.0.0",
+  "name": "@anfibiacreativa/scully-docs",
+  "version": "0.0.1",
   "description": "A library to create a documentation site with Scully",
   "scripts": {
     "build": "tsc -p tsconfig.json",
