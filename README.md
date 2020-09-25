@@ -3,10 +3,30 @@
 This is under development and has some pending tasks:
 * write tests
 * clean types
+* importing ScullyLibModule to app.module!*
 * add ng add support (/) Done!
-* publish to npm
+* publish to npm (/) Done!
 
-But you can already use it. Clone and link to your project
+(*) Right now you have to manually import the ScullyLibModule to the app.module and declare it in the imports!
+
+```
+import { ScullyLibModule } from '@scullyio/ng-lib';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ScullyLibModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+´´´
+
+Then you can already use it. Clone and link to your project
 
 Create the modules with
 `$ ng generate scully-docs:docs`
